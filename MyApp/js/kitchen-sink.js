@@ -94,7 +94,7 @@ myApp.addItem = function () {
 
     setTimeout(function () {
         $('#lineItemsOutput').html(output);
-    }, 300);
+    }, 500);
 
 
 };
