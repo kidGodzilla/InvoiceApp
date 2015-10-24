@@ -1,0 +1,87 @@
+
+<div data-page="form-elements" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="forms.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">New Invoice Item</div>
+      <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="content-block-title">Create a New Invoice Item</div>
+    <div class="list-block inputs-list">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner"> 
+              <div class="item-title label">Title</div>
+              <div class="item-input">
+                <input id="nliTitle" type="text" placeholder="Give this item a title"/>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="align-top">
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">Description</div>
+              <div class="item-input">
+                <textarea id="nliDescription" class="resizable" placeholder="Describe the item (optional)"></textarea>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">Quantity</div>
+              <div class="item-input">
+                <input id="nliQuantity" type="number" placeholder="Enter Quantity"/>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner"> 
+              <div class="item-title label">Type (optional)</div>
+              <div class="item-input">
+                <select id="nliAttr">
+                  <option></option>
+                  <option>Hours</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">Price</div>
+              <div class="item-input">
+                <input id="nliPrice" type="number" placeholder="Enter Price (per item)"/>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <a href="line-items.html" onclick="myApp.addItem()" class="button button-fill">Add Item</a>
+    </div>
+
+  </div>
+</div>

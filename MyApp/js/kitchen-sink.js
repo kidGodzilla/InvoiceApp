@@ -25,7 +25,7 @@ $$(document).on('ajaxComplete', function () {
 });
 
 // Connect to firebase
-var firebaseRef = new Firebase("https://wpages.firebaseio.com");
+var firebaseRef = new Firebase("https://pocket-invoice.firebaseio.com");
 
 // Get an existing session for this user, if it exists
 var authData = firebaseRef.getAuth();
@@ -37,6 +37,7 @@ if (authData) {
     // if not logged in
     myApp.loginScreen(); // Immediately displays the login screen
 }
+
 
 // When the user clicks on the Login button (on the login screen)
 $$('.login-screen').find('.button').on('click', function () {
@@ -50,6 +51,9 @@ $$('.login-screen').find('.button').on('click', function () {
     }, function (error, authData) {
         if (error) {
             console.log(error);
+            myApp.addNotification({
+                message: error
+            });
         } else {
             var userID = authData.uid;
             console.log("Authenticated user with uid:", authData.uid);
@@ -60,14 +64,40 @@ $$('.login-screen').find('.button').on('click', function () {
 });
 
 $(document).ready(function () {
-
     // Click this button to bring up the registration form
     $('.register-button').click(function () {
         myApp.closeModal('.login-screen'); // Close the login modal
         $('.hidden-register-button').click();
     });
-
 });
+
+myApp.lineItems = [];
+
+myApp.addItem = function () {
+    var obj = {};
+
+    obj.title = $$('#nliTitle').val();
+    obj.description = $$('#nliDescription').val();
+    obj.quantity = $$('#nliQuantity').val();
+    obj.attr = $$('#nliAttr').val();
+    obj.price = $$('#nliPrice').val();
+    myApp.lineItems.push(obj);
+
+    var template = ' <li class="swipeout"> <div class="swipeout-content"><a href="#" class="item-link item-content"> <div class="item-inner"> <div class="item-title-row"> <div class="item-title">{{title}}</div> <div class="item-after">{{price}}</div> </div> <div class="item-text">{{description}}</div> </div></a></div> <div class="swipeout-actions-right"><a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete swipeout-overswipe">Delete</a></div> </li>';
+    var output = "";
+
+    myApp.lineItems.forEach(function (item) {
+        var priceString = item.quantity + " " + item.attr + " x $" + item.price;
+        thisTemplate = template.replace('{{title}}', item.title).replace('{{description}}', item.description).replace('{{price}}', priceString);
+        output += thisTemplate
+    });
+
+    setTimeout(function () {
+        $('#lineItemsOutput').html(output);
+    }, 300);
+
+
+};
 
 function register () {
     var email = $$('.registration-form').find('input[type="email"]').val();
