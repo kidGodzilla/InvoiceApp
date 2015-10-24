@@ -1,6 +1,6 @@
 // Init App
 var myApp = new Framework7({
-    modalTitle: 'Framework7',
+    modalTitle: 'Invoice App',
     // Enable Material theme
     material: true,
 });
